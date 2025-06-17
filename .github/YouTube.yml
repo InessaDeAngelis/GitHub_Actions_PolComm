@@ -1,0 +1,49 @@
+name: Sample Video Info
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write  
+
+jobs:
+  build:
+    runs-on: macOS-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11.5'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r YouTube/requirements.txt
+
+      - name: Collect data
+        env:
+          API_KEY: ${{ secrets.API_KEY }}  
+        run: |
+          python YouTube/01-download_data.py  
+
+      - name: Commit changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+        run: |
+          git config user.name "Inessa De Angelis"  
+          git config user.email "inessa.deangelis@mail.utoronto.ca"  
+          
+          # Check if there are any changes
+          if [ -n "$(git status --porcelain)" ]; then
+            git add .
+            git commit -m "got the data"
+            git push
+          else
+            echo "No changes to commit."
+          fi
