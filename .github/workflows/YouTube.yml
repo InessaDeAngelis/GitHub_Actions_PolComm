@@ -28,7 +28,7 @@ jobs:
 
       - name: Collect data
         env:
-          API_KEY: ${{ secrets.API_KEY }}  
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}  
         run: |
           python YouTube/01-download_data.py  
 

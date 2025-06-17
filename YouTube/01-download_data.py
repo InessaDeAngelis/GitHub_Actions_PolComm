@@ -14,7 +14,7 @@ import os
 from dotenv import load_dotenv
 
 #### API KEY ####
-key = os.getenv("API_KEY")
+key = os.getenv("YOUTUBE_API_KEY")
 
 ## Check if API key is present ##
 if not key:
