@@ -1,4 +1,4 @@
-name: Collect cdnpoli posts
+name: Collect cdnpoli posts from Bluesky
 
 on:
   push:
