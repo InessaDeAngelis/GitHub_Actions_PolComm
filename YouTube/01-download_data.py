@@ -21,8 +21,9 @@ if not key:
     print("API key is missing. Please check your .env file.")
     exit(1)
 
-#### Set up CSV file to save all responses ####
-csv_file = "YouTube/sample_video_info.csv"
+#### Get current date and set up CSV file to save all responses ####
+current_date_str = datetime.now().strftime('%Y-%m-%d')
+csv_file = f"YouTube/video_info_{current_date_str}.csv"
 
 #### Set up last run time file ####
 last_run_file = "YouTube/last_run_time.txt"
