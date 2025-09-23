@@ -26,6 +26,9 @@ jobs:
           Rscript "Bluesky/01-download_data.R"  
 
       - name: Configure git user
+        run: |
+          git config --global user.name "${{ secrets.GIT_USERNAME }}"
+          git config --global user.email "${{ secrets.GIT_EMAIL }}"
         env:
           GIT_USERNAME: ${{ secrets.GIT_USERNAME }}
           GIT_EMAIL: ${{ secrets.GIT_EMAIL }}  
@@ -33,5 +36,5 @@ jobs:
       - name: Commit results
         run: |
           git add -A
-          git commit -m 'new data!' || echo "No changes to commit"
+          git commit -m 'New data!' || echo "No changes to commit"
           git push origin || echo "No changes to commit"
