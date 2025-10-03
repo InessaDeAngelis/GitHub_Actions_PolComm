@@ -10,7 +10,6 @@
 ## Packages ##
 library(tidyverse)
 library(atrrr)
-library(dotenv)
 
 ## Authenticate ##
 bluesky_username <- Sys.getenv("BLUESKY_USERNAME")
