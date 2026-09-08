@@ -43,7 +43,7 @@ get_last_run_time <- function(file_path) {
 last_run_time <- get_last_run_time("Bluesky/last_run_time.txt")
 
 ## Search from #cdnpoli posts ##
-posts <- search_post("#cdnpoli", limit = Inf)
+posts <- search_post("#cdnpoli", limit = 400)
 
 ## Filter posts based off date in last run time file ##
 if (!is.na(last_run_time)) {
